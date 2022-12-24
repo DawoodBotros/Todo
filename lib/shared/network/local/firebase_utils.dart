@@ -28,3 +28,10 @@ Future<void> deleteTasksFromFirestore(String id)async {
 Future<void> EditTasksFromFirestore(TasksData task)async{
   await getTasksCollecton().doc(task.id).update(task.toJson());
 }
+Future<void> UpdateiSDone(TasksData done) {
+  return getTasksCollecton().doc(done.id).update({
+    "isDone" : !done.isDone,
+  });
+ 
+
+}

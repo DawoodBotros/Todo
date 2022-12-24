@@ -7,7 +7,6 @@ import 'package:todo/shared/network/local/firebase_utils.dart';
 import '../models/tasks.dart';
 import '../shared/components/components.dart';
 import '../shared/styles/colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditTasks extends StatefulWidget {
   static const String routeName = "edit";
@@ -35,7 +34,7 @@ class _EditTasksState extends State<EditTasks> {
         var pro = Provider.of<MyProvider>(context);
         return Scaffold(
           appBar: AppBar(
-            toolbarHeight: MediaQuery.of(context).size.height * 0.1,
+            toolbarHeight: MediaQuery.of(context).size.height * 0.2,
             title: Text("To Do List"),
           ),
           body: SingleChildScrollView(
@@ -45,7 +44,7 @@ class _EditTasksState extends State<EditTasks> {
                 borderRadius: BorderRadius.circular(15),
               ),
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
               child: Column(
                 children: [
                   Text(
@@ -72,6 +71,7 @@ class _EditTasksState extends State<EditTasks> {
                               return null;
                             }
                           },
+
                           controller: titleController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -171,7 +171,7 @@ class _EditTasksState extends State<EditTasks> {
                                     id: widget.id,
                                     date: DateUtils.dateOnly(
                                             provider.selectedDate)
-                                        .microsecondsSinceEpoch);
+                                        .microsecondsSinceEpoch,isDone: false);
                                 showLoading(context, "Loading....");
                                 EditTasksFromFirestore(tas1);
                                 hideLoading(context);

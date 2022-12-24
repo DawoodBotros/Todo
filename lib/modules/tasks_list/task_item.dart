@@ -77,10 +77,7 @@ class _TaskItemState extends State<TaskItem> {
             ),
             InkWell(
               onTap: () {
-               if(!widget.task.isDone){
-                 provider.UpdateiSDone(widget.task);
-               }
-               print(widget.task.isDone);
+               provider.editisdone(widget.task);
               },
               child: widget.task.isDone
                   ? Text(

@@ -147,7 +147,8 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                             title: titleController.text,
                             description: descriptionController.text,
                             date: DateUtils.dateOnly(provider.selectedDate)
-                                .microsecondsSinceEpoch);
+                                .microsecondsSinceEpoch,isDone: false);
+
                         showLoading(context, "Loading.....");
                         showMessage(context, AppLocalizations.of(context)!.sure_Add_task,
                             AppLocalizations.of(context)!.yes, () {
