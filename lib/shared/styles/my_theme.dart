@@ -17,7 +17,7 @@ class MyThemeData {
           background: greenBackground,
           onBackground: primaryColor,
           surface: Colors.grey,
-          onSurface: Colors.white),
+          onSurface: colorBlack),
       appBarTheme: AppBarTheme(
           backgroundColor: primaryColor,
           iconTheme: IconThemeData(color: Colors.white)),
@@ -36,9 +36,9 @@ class MyThemeData {
 
   static ThemeData darkTheme = ThemeData(
       primaryColor: primaryColor,
-      scaffoldBackgroundColor: greenBackground,
+      scaffoldBackgroundColor: darkPrimary,
       colorScheme: ColorScheme(
-          brightness: Brightness.light,
+          brightness: Brightness.dark,
           primary: primaryColor,
           onPrimary: Colors.white,
           secondary: greenBackground,
