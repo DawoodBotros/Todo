@@ -5,14 +5,12 @@ import 'package:todo/models/tasks.dart';
 import 'package:todo/provider/my_provider.dart';
 import 'package:todo/shared/network/local/firebase_utils.dart';
 import 'package:todo/shared/styles/colors.dart';
-import 'package:todo/shared/styles/my_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../layout/edit_task.dart';
 
 class TaskItem extends StatefulWidget {
   TasksData task;
-  bool isDone = false;
 
   TaskItem(this.task);
 
@@ -52,7 +50,7 @@ class _TaskItemState extends State<TaskItem> {
             color: provider.mode == ThemeMode.light ? Colors.white : colorgrey,
             borderRadius: BorderRadius.circular(12),
             border:
-                Border.all(color: widget.isDone ? colorGreen : primaryColor)),
+                Border.all(color: widget.task.isDone ? colorGreen : primaryColor)),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
@@ -60,7 +58,7 @@ class _TaskItemState extends State<TaskItem> {
             Container(
                 height: 80,
                 width: 4,
-                color: widget.isDone ? colorGreen : primaryColor),
+                color: widget.task.isDone ? colorGreen : primaryColor),
             SizedBox(
               width: 10,
             ),
@@ -71,7 +69,7 @@ class _TaskItemState extends State<TaskItem> {
                   Text(
                     widget.task.title,
                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        color: widget.isDone ? colorGreen : primaryColor),
+                        color: widget.task.isDone ? colorGreen : primaryColor),
                   ),
                   Text(widget.task.description),
                 ],
@@ -79,10 +77,12 @@ class _TaskItemState extends State<TaskItem> {
             ),
             InkWell(
               onTap: () {
-                provider.UpdateiSDone(widget.task);
-                print(provider.isDone);
+               if(!widget.task.isDone){
+                 provider.UpdateiSDone(widget.task);
+               }
+               print(widget.task.isDone);
               },
-              child: provider.isDone
+              child: widget.task.isDone
                   ? Text(
                       "Done!",
                       style: TextStyle(fontSize: 25, color: colorGreen),
